@@ -1,0 +1,21 @@
+.jumbotron {
+      margin-top: 10 rem;
+      background-color: #e2edff;
+    }
+
+#projects {
+    background-color: #e2edff;
+}
+.mee {
+    width: 250px;
+    height: auto;
+    margin-top: 80px;
+}
+
+.btn-link {
+    color: white;
+}
+
+.btn-link:hover {
+    color: red;
+}

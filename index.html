@@ -42,7 +42,7 @@
 <section class="jumbotron text-center ">
   <img src="assets/img/1.jpg" alt="profile" class="rounded-circle mee"/>
   <h1 class="display-4">Slamet Kusnandar</h1>
-  <p class="lead">Staff Production</p>
+  <p>I’m <span class="animated-text"></span><span class="cursor">|</span></p>
   <svg xmlns="http://www.w3.org/2000/svg" 
   viewBox="0 0 1440 320">
   <path fill="#ffff" 
@@ -156,6 +156,46 @@ Di bidang akademik, saya memiliki minat besar dalam dunia teknologi informasi, k
 <!-- akhir footer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
+  </script>
+
+  <script>
+    const textArray = [
+  
+  "Staff Production",
+  "Web Developer",
+  "UI/UX Designer",
+  "Freelancer",
+];
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const animatedText = document.querySelector(".animated-text");
+
+function typeEffect() {
+  const currentText = textArray[textIndex];
+  if (isDeleting) {
+    animatedText.textContent = currentText.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    animatedText.textContent = currentText.substring(0, charIndex + 1);
+    charIndex++;
+  }
+
+  let typingSpeed = isDeleting ? 50 : 100; // Kecepatan mengetik dan menghapus
+
+  if (!isDeleting && charIndex === currentText.length) {
+    typingSpeed = 1500; // Delay sebelum mulai menghapus
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    textIndex = (textIndex + 1) % textArray.length; // Loop ke teks berikutnya
+    typingSpeed = 500; // Delay sebelum mengetik teks baru
+  }
+
+  setTimeout(typeEffect, typingSpeed);
+}
+
+document.addEventListener("DOMContentLoaded", typeEffect);
   </script>
   </body>
 </html>
